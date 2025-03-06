@@ -1,0 +1,130 @@
+.section {
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.title {
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+  color: var(--color-brown-dark);
+  position: relative;
+  display: inline-block;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-gold);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.content {
+  width: 100%;
+}
+
+.light {
+  background-color: var(--color-white);
+  color: var(--color-text);
+}
+
+.dark {
+  background-color: var(--color-brown-dark);
+  color: var(--color-white);
+}
+
+.dark .title {
+  color: var(--color-white);
+}
+
+.dark .subtitle {
+  color: var(--color-cream);
+}
+
+.primary {
+  background-color: var(--color-cream);
+  color: var(--color-text);
+}
+
+.none {
+  background-color: transparent;
+}
+
+.padding-small {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.padding-medium {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.padding-large {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.padding-none {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Add decorative elements */
+.dark::before,
+.primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: var(--gradient-gold);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .padding-medium {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .padding-large {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  
+  .header {
+    margin-bottom: 2rem;
+  }
+} 
