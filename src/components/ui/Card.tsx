@@ -59,7 +59,7 @@ const Card: React.FC<CardProps> = ({
 
   return (
     <div className={`${styles.card} ${className}`}>
-      {image ? (
+      {image && (
         <div className={styles.imageContainer}>
           {imageError ? (
             <div className={styles.imagePlaceholder}>
@@ -75,14 +75,6 @@ const Card: React.FC<CardProps> = ({
               onError={handleImageError}
             />
           )}
-        </div>
-      ) : (
-        <div className={styles.imageContainer}>
-          <div className={styles.imagePlaceholder}>
-            <span className={styles.categoryIcon}>
-              {getCategoryIcon(category)}
-            </span>
-          </div>
         </div>
       )}
       <div className={styles.content}>

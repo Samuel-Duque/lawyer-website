@@ -128,13 +128,13 @@ const SobreNosPage: React.FC = () => {
                   <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <i className={styles.linkedinIcon}></i>
                   </a>
-                  <a href="mailto:silvia@silvialocatel.adv.br" aria-label="Email">
+                  <a href="mailto:silvialocateladvogada@gmail.com" aria-label="Email">
                     <i className={styles.emailIcon}></i>
                   </a>
                 </div>
               </div>
               
-              <div className={styles.teamMember}>
+              {/* <div className={styles.teamMember}>
                 <div className={styles.memberImage}>
                   <img 
                     src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
@@ -178,7 +178,7 @@ const SobreNosPage: React.FC = () => {
                     <i className={styles.emailIcon}></i>
                   </a>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>

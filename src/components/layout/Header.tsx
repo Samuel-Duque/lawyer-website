@@ -68,10 +68,10 @@ const Header: React.FC = () => {
         <div className={styles.contactInfo}>
           <a href="tel:+5500000000000" className={styles.phone}>
             <i className={styles.phoneIcon}></i>
-            (00) 00000-0000
+            (81) 99852-9030
           </a>
-          <a href="mailto:contato@silvialocatel.adv.br" className={styles.email}>
-            contato@silvialocatel.adv.br
+          <a href="mailto:silvialocateladvogada@gmail.com" className={styles.email}>
+          silvialocateladvogada@gmail.com
           </a>
         </div>
       </div>

@@ -65,11 +65,11 @@ const Footer: React.FC = () => {
                 </p>
                 <p>
                   <i className={styles.phoneIcon}></i>
-                  <a href="tel:+5500000000000">(00) 00000-0000</a>
+                  <a href="https://wa.me/+5581998529030">(81) 99852-9030</a>
                 </p>
                 <p>
                   <i className={styles.emailIcon}></i>
-                  <a href="mailto:contato@silvialocatel.adv.br">contato@silvialocatel.adv.br</a>
+                  <a href="mailto:silvialocateladvogada@gmail.com">silvialocateladvogada@gmail.com</a>
                 </p>
               </address>
             </div>

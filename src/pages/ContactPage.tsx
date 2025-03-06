@@ -123,7 +123,7 @@ const ContactPage: React.FC = () => {
                 </div>
                 <div>
                   <h4>Telefone</h4>
-                  <p>(00) 00000-0000</p>
+                  <p>(81) 99852-9030</p>
                 </div>
               </div>
               <div className={styles.infoItem}>
