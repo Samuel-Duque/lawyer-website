@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
                 <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                   <i className={styles.linkedinIcon}></i>
                 </a>
-                <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <a href="https://www.instagram.com/silvialocatel.adv/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <i className={styles.instagramIcon}></i>
                 </a>
                 <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
@@ -59,9 +59,9 @@ const Footer: React.FC = () => {
               <address className={styles.contactInfo}>
                 <p>
                   <i className={styles.locationIcon}></i>
-                  Av. Paulista, 1000, Sala 101<br />
-                  Bela Vista, São Paulo - SP<br />
-                  CEP: 01310-100
+                  Rua Antônio Almeida, n 168, Sala 17<br />
+                  Imbiribeira, Recife - PE<br />
+                  CEP: 51170-530
                 </p>
                 <p>
                   <i className={styles.phoneIcon}></i>

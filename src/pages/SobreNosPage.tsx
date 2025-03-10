@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import styles from './SobreNosPage.module.css';
-
+import silviaLocatelImage from '../images/adv.jpg';
 const SobreNosPage: React.FC = () => {
   return (
     <Layout>
@@ -29,7 +29,7 @@ const SobreNosPage: React.FC = () => {
                   onde cada cliente recebe atenção individual às suas necessidades específicas.
                 </p>
                 <p>
-                  Com mais de 15 anos de experiência no mercado jurídico, nos estabelecemos como 
+                  Com vasta experiência no mercado jurídico, nos estabelecemos como 
                   uma referência em diversas áreas do Direito, combinando conhecimento técnico 
                   com uma abordagem estratégica para obter os melhores resultados para nossos clientes.
                 </p>
@@ -111,18 +111,18 @@ const SobreNosPage: React.FC = () => {
             
             <div className={styles.teamGrid}>
               <div className={styles.teamMember}>
-                <div className={styles.memberImage}>
+                <div className={styles.memberImageWrapper}>
                   <img 
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                    src={silviaLocatelImage}
+                    className={styles.memberImage}
                     alt="Dra. Silvia Locatel"
                   />
                 </div>
                 <h3>Dra. Silvia Locatel</h3>
                 <p className={styles.memberRole}>Advogada Sócia-Fundadora</p>
                 <p className={styles.memberBio}>
-                  Especialista em Direito Civil e Empresarial, com mais de 15 anos de experiência. 
-                  Formada pela Universidade de São Paulo (USP), com pós-graduação em Direito 
-                  Empresarial pela FGV.
+                  Especialista em Direito Civil e Empresarial, com vasta experiência. 
+                  Formada pela Universidade Universo.
                 </p>
                 <div className={styles.memberSocial}>
                   <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">

@@ -14,7 +14,7 @@ const AboutSection: React.FC = () => {
       <div className={styles.content}>
         <div className={styles.text}>
           <p>
-            Com mais de 15 anos de experiência, a <strong>Locatel Advocacia</strong> se destaca 
+            Com vasta experiência, a <strong>Locatel Advocacia</strong> se destaca 
             por oferecer assessoria jurídica personalizada e de alta qualidade, atendendo às necessidades 
             específicas de cada cliente com profissionalismo e dedicação.
           </p>

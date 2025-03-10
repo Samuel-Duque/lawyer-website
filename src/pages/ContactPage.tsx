@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../components/layout/Layout';
 import Section from '../components/ui/Section';
 import Button from '../components/ui/Button';
+import GoogleMapEmbed from '../components/ui/GoogleMapEmbed';
 import styles from './ContactPage.module.css';
 
-// Social media icons (could be replaced with actual icon components)
-const socialIcons = {
-  facebook: '📘',
-  instagram: '📷',
-  linkedin: '📋',
-  twitter: '🐦',
-};
+// Import React Icons
+import { 
+  FaMapMarkerAlt, 
+  FaPhone, 
+  FaEnvelope, 
+  FaClock, 
+  FaFacebookF, 
+  FaInstagram, 
+  FaLinkedinIn,
+  FaTwitter,
+  FaLongArrowAltRight,
+  FaCheckCircle,
+  FaTimes,
+  FaArrowRight
+} from 'react-icons/fa';
+
+// Locatel Advocacia Google Maps embed URL
+const GOOGLE_MAPS_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1975.0461696951575!2d-34.9174677!3d-8.0920656!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa258c58ef878b98d%3A0xb3abfc34e84eb53e!2sLocatel%20Advocacia!5e0!3m2!1spt-BR!2sbr!4v1741627846508!5m2!1spt-BR!2sbr";
 
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -30,6 +42,20 @@ const ContactPage: React.FC = () => {
 
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formFocus, setFormFocus] = useState<string | null>(null);
+  const [notification, setNotification] = useState<{show: boolean, message: string, type: 'success' | 'error'} | null>(null);
+
+  // Handle notification dismiss
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (notification && notification.show) {
+      timer = setTimeout(() => {
+        setNotification(prev => prev ? {...prev, show: false} : null);
+      }, 5000);
+    }
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [notification]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -71,12 +97,24 @@ const ContactPage: React.FC = () => {
     e.preventDefault();
     
     if (!validateForm()) {
+      setNotification({
+        show: true,
+        message: 'Por favor, preencha todos os campos obrigatórios corretamente.',
+        type: 'error'
+      });
       return;
     }
     
     // In a real application, you would send the form data to a server
     console.log('Form submitted:', formData);
     setFormSubmitted(true);
+    
+    // Show success notification
+    setNotification({
+      show: true,
+      message: 'Mensagem enviada com sucesso! Entraremos em contato em breve.',
+      type: 'success'
+    });
     
     // Reset form after submission
     setFormData({
@@ -93,53 +131,83 @@ const ContactPage: React.FC = () => {
     }, 5000);
   };
 
+  const closeNotification = () => {
+    setNotification(prev => prev ? {...prev, show: false} : null);
+  };
+
   return (
     <Layout>
-      <div className={styles.heroContainer}>
+      {/* Notification Toast */}
+      {notification && notification.show && (
+        <div className={`${styles.notification} ${styles[notification.type]}`}>
+          <div className={styles.notificationIcon}>
+            {notification.type === 'success' ? FaCheckCircle({}) : FaTimes({})}
+          </div>
+          <p>{notification.message}</p>
+          <button 
+            onClick={closeNotification} 
+            className={styles.closeNotification}
+            aria-label="Fechar notificação"
+          >
+            {FaTimes({})}
+          </button>
+        </div>
+      )}
+
+      {/* Premium Hero Section with Paralax Effect */}
+      <div className={styles.heroSection}>
+        <div className={styles.heroOverlay}></div>
         <div className={styles.heroContent}>
           <h1>Entre em Contato</h1>
-          <p>Estamos prontos para ajudar você com suas necessidades jurídicas</p>
+          <div className={styles.separator}></div>
+          <p>Estamos prontos para oferecer soluções jurídicas personalizadas e atender às suas necessidades legais com excelência</p>
         </div>
       </div>
 
-      <Section backgroundColor="light" padding="large">
+      {/* Main Contact Section */}
+      <div className={styles.contactWrapper}>
         <div className={styles.contactContainer}>
+          {/* Contact Information Card */}
           <div className={styles.contactInfo}>
             <div className={styles.infoCard}>
               <h3>Informações de Contato</h3>
+              
               <div className={styles.infoItem}>
                 <div className={styles.iconContainer}>
-                  <span className={styles.icon}>📍</span>
+                  {FaMapMarkerAlt({ className: styles.icon })}
                 </div>
-                <div>
+                <div className={styles.infoContent}>
                   <h4>Endereço</h4>
-                  <p>Rua Exemplo, 123, Centro</p>
-                  <p>São Paulo - SP, 01001-000</p>
+                  <p>R. Antônio Almeida, 168, Sala 17  Imbiribeira</p>
+                  <p>Recife - PE, 51170-530</p>
                 </div>
               </div>
+              
               <div className={styles.infoItem}>
                 <div className={styles.iconContainer}>
-                  <span className={styles.icon}>📞</span>
+                  {FaPhone({ className: styles.icon })}
                 </div>
-                <div>
+                <div className={styles.infoContent}>
                   <h4>Telefone</h4>
                   <p>(81) 99852-9030</p>
                 </div>
               </div>
+              
               <div className={styles.infoItem}>
                 <div className={styles.iconContainer}>
-                  <span className={styles.icon}>✉️</span>
+                  {FaEnvelope({ className: styles.icon })}
                 </div>
-                <div>
+                <div className={styles.infoContent}>
                   <h4>Email</h4>
-                  <p>contato@locateladvocacia.com.br</p>
+                  <p>silvialocateladvogada@gmail.com</p>
                 </div>
               </div>
+              
               <div className={styles.infoItem}>
                 <div className={styles.iconContainer}>
-                  <span className={styles.icon}>⏰</span>
+                  {FaClock({ className: styles.icon })}
                 </div>
-                <div>
+                <div className={styles.infoContent}>
                   <h4>Horário de Atendimento</h4>
                   <p>Segunda a Sexta: 9h às 18h</p>
                 </div>
@@ -148,35 +216,49 @@ const ContactPage: React.FC = () => {
               <div className={styles.socialMedia}>
                 <h4>Redes Sociais</h4>
                 <div className={styles.socialIcons}>
-                  <a href="#" className={styles.socialLink}>
-                    <span className={styles.socialIcon}>{socialIcons.facebook}</span>
+                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Facebook">
+                    {FaFacebookF({ className: styles.socialIcon })}
                   </a>
-                  <a href="#" className={styles.socialLink}>
-                    <span className={styles.socialIcon}>{socialIcons.instagram}</span>
+                  <a href="https://www.instagram.com/silvialocatel.adv/" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Instagram">
+                    {FaInstagram({ className: styles.socialIcon })}
                   </a>
-                  <a href="#" className={styles.socialLink}>
-                    <span className={styles.socialIcon}>{socialIcons.linkedin}</span>
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="LinkedIn">
+                    {FaLinkedinIn({ className: styles.socialIcon })}
                   </a>
-                  <a href="#" className={styles.socialLink}>
-                    <span className={styles.socialIcon}>{socialIcons.twitter}</span>
+                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Twitter">
+                    {FaTwitter({ className: styles.socialIcon })}
                   </a>
                 </div>
               </div>
             </div>
           </div>
-
-          <div className={styles.contactForm}>
-            <h3>Envie uma Mensagem</h3>
+          
+          {/* Contact Form */}
+          <div className={styles.contactFormContainer}>
+            <div className={styles.formHeader}>
+              <h3>Envie uma Mensagem</h3>
+              <p>Preencha o formulário abaixo e nossa equipe entrará em contato o mais breve possível.</p>
+            </div>
+            
             {formSubmitted ? (
               <div className={styles.successMessage}>
-                <div className={styles.successIcon}>✓</div>
+                <div className={styles.successIcon}>
+                  {FaCheckCircle({})}
+                </div>
                 <h4>Mensagem Enviada!</h4>
                 <p>Sua mensagem foi enviada com sucesso! Entraremos em contato em breve.</p>
+                <Button 
+                  type="button" 
+                  onClick={() => setFormSubmitted(false)} 
+                  variant="outlined"
+                >
+                  Enviar Nova Mensagem
+                </Button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit} className={styles.contactForm}>
                 <div className={`${styles.formGroup} ${formErrors.name ? styles.hasError : ''} ${formFocus === 'name' ? styles.focused : ''}`}>
-                  <label htmlFor="name">Nome Completo *</label>
+                  <label htmlFor="name">Nome Completo <span className={styles.required}>*</span></label>
                   <input
                     type="text"
                     id="name"
@@ -185,6 +267,7 @@ const ContactPage: React.FC = () => {
                     onChange={handleChange}
                     onFocus={() => handleFocus('name')}
                     onBlur={handleBlur}
+                    placeholder="Seu nome completo"
                     required
                   />
                   {formErrors.name && <div className={styles.errorMessage}>Por favor, insira seu nome</div>}
@@ -192,7 +275,7 @@ const ContactPage: React.FC = () => {
                 
                 <div className={styles.formRow}>
                   <div className={`${styles.formGroup} ${formErrors.email ? styles.hasError : ''} ${formFocus === 'email' ? styles.focused : ''}`}>
-                    <label htmlFor="email">Email *</label>
+                    <label htmlFor="email">Email <span className={styles.required}>*</span></label>
                     <input
                       type="email"
                       id="email"
@@ -201,6 +284,7 @@ const ContactPage: React.FC = () => {
                       onChange={handleChange}
                       onFocus={() => handleFocus('email')}
                       onBlur={handleBlur}
+                      placeholder="seu.email@exemplo.com"
                       required
                     />
                     {formErrors.email && <div className={styles.errorMessage}>Por favor, insira um email válido</div>}
@@ -216,12 +300,13 @@ const ContactPage: React.FC = () => {
                       onChange={handleChange}
                       onFocus={() => handleFocus('phone')}
                       onBlur={handleBlur}
+                      placeholder="(00) 00000-0000"
                     />
                   </div>
                 </div>
                 
                 <div className={`${styles.formGroup} ${formErrors.subject ? styles.hasError : ''} ${formFocus === 'subject' ? styles.focused : ''}`}>
-                  <label htmlFor="subject">Assunto *</label>
+                  <label htmlFor="subject">Assunto <span className={styles.required}>*</span></label>
                   <select
                     id="subject"
                     name="subject"
@@ -244,62 +329,77 @@ const ContactPage: React.FC = () => {
                 </div>
                 
                 <div className={`${styles.formGroup} ${formErrors.message ? styles.hasError : ''} ${formFocus === 'message' ? styles.focused : ''}`}>
-                  <label htmlFor="message">Mensagem *</label>
+                  <label htmlFor="message">Mensagem <span className={styles.required}>*</span></label>
                   <textarea
                     id="message"
                     name="message"
-                    rows={5}
                     value={formData.message}
                     onChange={handleChange}
                     onFocus={() => handleFocus('message')}
                     onBlur={handleBlur}
+                    placeholder="Descreva como podemos ajudar você..."
+                    rows={6}
                     required
                   ></textarea>
-                  {formErrors.message && <div className={styles.errorMessage}>Por favor, escreva sua mensagem</div>}
+                  {formErrors.message && <div className={styles.errorMessage}>Por favor, insira sua mensagem</div>}
                 </div>
                 
                 <div className={styles.formActions}>
-                  <Button type="submit" variant="primary" size="large">
-                    Enviar Mensagem
+                  <p className={styles.requiredFieldsNote}>
+                    <span className={styles.required}>*</span> Campos obrigatórios
+                  </p>
+                  <Button 
+                    type="submit" 
+                    variant="primary"
+                  >
+                    Enviar Mensagem {FaLongArrowAltRight({ style: { marginLeft: '8px' } })}
                   </Button>
-                  <p className={styles.requiredFieldsNote}>* Campos obrigatórios</p>
                 </div>
               </form>
             )}
           </div>
         </div>
-      </Section>
-      
-      <Section backgroundColor="primary" padding="medium">
-        <div className={styles.mapContainer}>
-          <h3>Nossa Localização</h3>
-          <div className={styles.map}>
-            {/* In a real application, you would embed a Google Map here */}
-            <div className={styles.mapPlaceholder}>
-              <div className={styles.mapIcon}>📍</div>
-              <p>Rua Exemplo, 123, Centro - São Paulo - SP</p>
-              <button className={styles.directionsButton}>
-                Obter Direções
-              </button>
-            </div>
+      </div>
+
+      {/* Map Section - Updated with Google Maps iframe embed */}
+      <Section backgroundColor="light" padding="large">
+        <div className={styles.mapSection}>
+          <div className={styles.mapHeader}>
+            <h2>Encontre-nos</h2>
+            <p>Visite o escritório Locatel Advocacia em Recife</p>
+          </div>
+          <div className={styles.mapContainer}>
+            <GoogleMapEmbed 
+              embedUrl={GOOGLE_MAPS_EMBED_URL}
+              height="400px"
+            />
+          </div>
+          <div className={styles.mapDirections}>
+            <a 
+              href="https://maps.app.goo.gl/4j8oJkLh1WM35TRL9" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={styles.directionsButton}
+            >
+              Como Chegar {FaArrowRight({ style: { marginLeft: '8px', fontSize: '14px' } })}
+            </a>
           </div>
         </div>
       </Section>
 
-      <div className={styles.ctaSection}>
-        <div className={styles.ctaContent}>
-          <h2>Agende uma Consulta</h2>
-          <p>Disponível para atendimento presencial ou virtual</p>
-          <div className={styles.ctaButtons}>
-            <Button variant="primary" size="large">
-              Ligar Agora
-            </Button>
-            <Button variant="outlined-gold" size="large">
-              Agendar Online
-            </Button>
+      {/* CTA Section */}
+      <Section backgroundColor="dark" padding="large">
+        <div className={styles.ctaSection}>
+          <div className={styles.ctaContent}>
+            <h2>Precisa de Aconselhamento Jurídico?</h2>
+            <p>Agende uma consulta inicial gratuita com um de nossos especialistas hoje mesmo</p>
+            <div className={styles.ctaButtons}>
+              <Button variant="primary">Agendar Consulta</Button>
+              <Button variant="outlined-gold">Conhecer Nossos Serviços</Button>
+            </div>
           </div>
         </div>
-      </div>
+      </Section>
     </Layout>
   );
 };

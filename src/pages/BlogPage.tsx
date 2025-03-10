@@ -21,7 +21,7 @@ const MOCK_POSTS = [
     title: 'Mudanças na Lei Trabalhista: O que você precisa saber',
     excerpt: 'Conheça as principais alterações na legislação trabalhista e como elas podem afetar seus direitos e obrigações.',
     date: '15 de Março de 2023',
-    author: 'Dra. Ana Locatel',
+    author: 'Dra. Silvia Locatel',
     slug: 'mudancas-lei-trabalhista',
     image: '/images/blog/trabalhista.jpg',
     category: 'Direito Trabalhista',
@@ -33,7 +33,7 @@ const MOCK_POSTS = [
     title: 'Direito de Família: Guarda Compartilhada x Guarda Unilateral',
     excerpt: 'Entenda as diferenças entre os tipos de guarda e qual a melhor opção para o bem-estar dos filhos após a separação.',
     date: '28 de Fevereiro de 2023',
-    author: 'Dr. Carlos Mendes',
+    author: 'Dra. Silvia Locatel',
     slug: 'guarda-compartilhada-unilateral',
     image: '/images/blog/familia.jpg',
     category: 'Direito Familiar',
@@ -45,7 +45,7 @@ const MOCK_POSTS = [
     title: 'Como proteger seu patrimônio: Planejamento sucessório',
     excerpt: 'Saiba como o planejamento sucessório pode ajudar a proteger seu patrimônio e garantir a tranquilidade de sua família.',
     date: '10 de Fevereiro de 2023',
-    author: 'Dra. Ana Locatel',
+    author: 'Dra. Silvia Locatel',
     slug: 'planejamento-sucessorio',
     image: '/images/blog/patrimonio.jpg',
     category: 'Direito Civil',
@@ -57,7 +57,7 @@ const MOCK_POSTS = [
     title: 'Direitos do Consumidor: O que fazer quando um produto apresenta defeito',
     excerpt: 'Conheça seus direitos como consumidor e saiba como proceder quando um produto apresenta problemas.',
     date: '25 de Janeiro de 2023',
-    author: 'Dr. Paulo Silveira',
+    author: 'Dra. Silvia Locatel',
     slug: 'direitos-consumidor-produtos-defeito',
     image: '/images/blog/consumidor.jpg',
     category: 'Direito Civil',
@@ -69,7 +69,7 @@ const MOCK_POSTS = [
     title: 'Reforma Tributária: Impactos para Empresas e Pessoas Físicas',
     excerpt: 'Análise detalhada sobre os impactos da reforma tributária e como se preparar para as mudanças.',
     date: '5 de Janeiro de 2023',
-    author: 'Dr. Marcos Pereira',
+    author: 'Dra. Silvia Locatel',
     slug: 'reforma-tributaria-impactos',
     image: '/images/blog/tributario.jpg',
     category: 'Direito Tributário',
@@ -81,7 +81,7 @@ const MOCK_POSTS = [
     title: 'Contratos de Locação Comercial: Cláusulas Essenciais',
     excerpt: 'Guia completo sobre as cláusulas essenciais que devem estar presentes em contratos de locação comercial.',
     date: '18 de Dezembro de 2022',
-    author: 'Dra. Ana Locatel',
+    author: 'Dra. Silvia Locatel',
     slug: 'contratos-locacao-comercial',
     image: '/images/blog/imobiliario.jpg',
     category: 'Direito Imobiliário',
@@ -93,7 +93,7 @@ const MOCK_POSTS = [
 const BlogPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const [posts, setPosts] = useState(MOCK_POSTS);
+  // const [posts, setPosts] = useState(MOCK_POSTS);
   const [visiblePosts, setVisiblePosts] = useState(MOCK_POSTS);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 

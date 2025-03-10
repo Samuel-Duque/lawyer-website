@@ -78,16 +78,26 @@
 }
 
 .imageContainer {
-  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .imageWrapper {
   position: relative;
-  padding-top: 120%;
+  width: 100%;
+  height: 0;
+  padding-bottom: 125%; /* Adjusted aspect ratio to better fit a portrait photo */
+  border-radius: 10px;
   overflow: hidden;
-  border-radius: 8px;
-  box-shadow: var(--shadow-lg);
-  border: 5px solid var(--color-white);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s ease;
+}
+
+.imageWrapper:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 .imageWrapper::after {
@@ -109,10 +119,32 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--color-brown-light);
-  background-image: linear-gradient(45deg, var(--color-brown-light) 25%, var(--color-brown) 25%, var(--color-brown) 50%, var(--color-brown-light) 50%, var(--color-brown-light) 75%, var(--color-brown) 75%, var(--color-brown) 100%);
-  background-size: 20px 20px;
-  opacity: 0.2;
+  background-image:url('/public/adv.jpg');
+  background-size: 100% auto; /* Slightly zoomed in for better focus on face */
+  background-position: 50% 0%; /* Horizontally centered, shifted upward to focus on face */
+  background-repeat: no-repeat;
+  transition: all 0.5s ease; /* Smooth transition for hover effect */
+}
+
+/* Add a subtle gradient overlay for a premium look */
+.placeholder::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(66, 44, 29, 0.3) 100%
+  );
+  z-index: 1;
+}
+
+/* Add a subtle zoom effect on hover for an interactive feel */
+.imageWrapper:hover .placeholder {
+  background-size: 115% auto;
 }
 
 @media (max-width: 992px) {

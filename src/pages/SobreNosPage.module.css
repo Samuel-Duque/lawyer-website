@@ -233,19 +233,50 @@
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
-.memberImage {
-  width: 150px;
-  height: 150px;
+.memberImageWrapper {
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto 20px;
   border: 5px solid #edf2f7;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.memberImage img {
+.memberImageWrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(212, 175, 55, 0) 60%,
+    rgba(212, 175, 55, 0.15) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.teamMember:hover .memberImageWrapper {
+  border-color: var(--color-gold);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.memberImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 20%; /* Further adjust to better center the face */
+  transition: transform 0.5s ease;
+}
+
+.teamMember:hover .memberImage {
+  transform: scale(1.08);
 }
 
 .teamMember h3 {
@@ -470,15 +501,15 @@
 
 @media (max-width: 768px) {
   .heroSection {
-    padding: 150px 0 80px;
+    padding: 100px 0 60px;
   }
   
   .heroSection h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
   
   .subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   
   .twoColumnGrid {
@@ -486,22 +517,36 @@
   }
   
   .column:nth-child(2) {
-    order: -1;
+    margin-top: 40px;
+  }
+
+  .imageWrapper {
+    max-width: 90%;
+  }
+
+  .officeImage {
+    height: 400px;
   }
   
   .historySection,
   .missionSection,
   .teamSection,
-  .testimonialsSection {
+  .testimonialsSection,
+  .ctaSection {
     padding: 60px 0;
+  }
+
+  .memberImageWrapper {
+    width: 160px;
+    height: 160px;
   }
   
   .ctaSection h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   
   .ctaSection p {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }
 

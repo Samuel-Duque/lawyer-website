@@ -125,7 +125,7 @@ const AreasDeAtuacaoPage: React.FC = () => {
                 </div>
                 <h3>Experiência</h3>
                 <p>
-                  Mais de 15 anos de atuação no mercado jurídico, com um histórico 
+                  Vasta experiência em atuação no mercado jurídico, com um histórico 
                   comprovado de casos bem-sucedidos em diversas áreas do direito.
                 </p>
               </div>

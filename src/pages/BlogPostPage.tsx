@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Layout from '../components/layout/Layout';
 import Section from '../components/ui/Section';
 import Button from '../components/ui/Button';
@@ -33,7 +33,7 @@ const MOCK_POST = {
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl.</p>
   `,
   date: '15 de Março de 2023',
-  author: 'Dra. Ana Locatel',
+  author: 'Dra. Silvia Locatel',
   slug: 'mudancas-lei-trabalhista',
   image: '/public/post1.jpeg',
   authorImage: '/images/team/ana-locatel.jpg',
@@ -41,7 +41,7 @@ const MOCK_POST = {
 };
 
 const BlogPostPage: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>();
+  // const { slug } = useParams<{ slug: string }>();
   
   // In a real application, you would fetch the post based on the slug
   // For now, we'll just use our mock data
