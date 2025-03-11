@@ -7,6 +7,8 @@ import ContactPage from './pages/ContactPage';
 import SobreNosPage from './pages/SobreNosPage';
 import AreasDeAtuacaoPage from './pages/AreasDeAtuacaoPage';
 import AreaDeAtuacaoPage from './pages/AreaDeAtuacaoPage';
+import AdminPage from './pages/AdminPage';
+import PostFormPage from './pages/PostFormPage';
 import ScrollToTop from './components/utils/ScrollToTop';
 import './App.css';
 
@@ -22,6 +24,9 @@ function App() {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />
         <Route path="/contato" element={<ContactPage />} />
+        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/admin/post/new" element={<PostFormPage />} />
+        <Route path="/admin/post/edit/:id" element={<PostFormPage />} />
         {/* Add more routes as needed */}
       </Routes>
     </Router>

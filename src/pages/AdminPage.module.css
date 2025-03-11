@@ -1,0 +1,258 @@
+.adminHeader {
+  background: var(--gradient-brown);
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.adminHeader::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(135deg, var(--color-brown-dark) 25%, transparent 25%) -10px 0,
+              linear-gradient(225deg, var(--color-brown-dark) 25%, transparent 25%) -10px 0,
+              linear-gradient(315deg, var(--color-brown-dark) 25%, transparent 25%),
+              linear-gradient(45deg, var(--color-brown-dark) 25%, transparent 25%);
+  background-size: 20px 20px;
+  background-color: var(--color-cream);
+}
+
+.headerContent h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.headerContent h1::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--color-gold);
+}
+
+.headerContent p {
+  color: var(--color-cream);
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.adminContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.adminActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+
+.postsTable {
+  background-color: var(--color-white);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+}
+
+.postsTable h2 {
+  color: var(--color-brown-dark);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.postsTable h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-gold);
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.postsTable table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.postsTable th {
+  text-align: left;
+  padding: 1rem;
+  background-color: var(--color-cream);
+  color: var(--color-brown-dark);
+  font-weight: 600;
+  border-bottom: 2px solid var(--color-gold);
+}
+
+.postsTable td {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e5e5;
+  color: var(--color-text);
+}
+
+.postsTable tr:hover {
+  background-color: rgba(248, 243, 230, 0.5);
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.editButton, .deleteButton, .viewButton {
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.editButton {
+  background-color: var(--color-cream);
+  color: var(--color-brown);
+  border: 1px solid var(--color-brown-light);
+  text-decoration: none;
+}
+
+.editButton:hover {
+  background-color: var(--color-brown-light);
+  color: var(--color-white);
+}
+
+.deleteButton {
+  background-color: #f8e6e6;
+  color: #cf5151;
+  border: 1px solid #e9baba;
+  cursor: pointer;
+}
+
+.deleteButton:hover {
+  background-color: #e9baba;
+}
+
+.viewButton {
+  background-color: var(--color-white);
+  color: var(--color-text);
+  border: 1px solid #e5e5e5;
+  text-decoration: none;
+}
+
+.viewButton:hover {
+  background-color: #f5f5f5;
+}
+
+.featuredToggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #ccc;
+  transition: var(--transition-fast);
+}
+
+.featuredToggle.featured {
+  color: var(--color-gold);
+}
+
+.featuredToggle:hover {
+  transform: scale(1.2);
+}
+
+.noPosts {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--color-text-light);
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  border: 1px dashed #e5e5e5;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: var(--color-text-light);
+  font-size: 1.2rem;
+}
+
+/* Form styles for post editing */
+.formContainer {
+  background-color: var(--color-white);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--color-brown-dark);
+}
+
+.formControl {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: var(--transition-fast);
+}
+
+.formControl:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+.checkboxGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkboxGroup input {
+  width: auto;
+}
+
+.editorContainer {
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  overflow: hidden;
+  min-height: 300px;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.formError {
+  color: #cf5151;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+} 

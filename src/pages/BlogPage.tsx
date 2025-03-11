@@ -15,7 +15,7 @@ const CATEGORIES = [
 ];
 
 // Mock data for blog posts
-const MOCK_POSTS = [
+export const MOCK_POSTS = [
   {
     id: 1,
     title: 'Mudanças na Lei Trabalhista: O que você precisa saber',
@@ -27,6 +27,29 @@ const MOCK_POSTS = [
     category: 'Direito Trabalhista',
     featured: true,
     readTime: '7 min',
+    content: `
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl.</p>
+      
+      <h2>Principais alterações</h2>
+      
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl.</p>
+      
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl.</p>
+      
+      <h2>Como isso afeta você</h2>
+      
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl.</p>
+      
+      <ul>
+        <li>Item 1: Lorem ipsum dolor sit amet</li>
+        <li>Item 2: Consectetur adipiscing elit</li>
+        <li>Item 3: Sed euismod, nisl vel ultricies lacinia</li>
+      </ul>
+      
+      <h2>Conclusão</h2>
+      
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eget aliquam nisl nisl sit amet nisl.</p>
+    `,
   },
   {
     id: 2,
@@ -93,13 +116,25 @@ const MOCK_POSTS = [
 const BlogPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  // const [posts, setPosts] = useState(MOCK_POSTS);
-  const [visiblePosts, setVisiblePosts] = useState(MOCK_POSTS);
+  const [posts, setPosts] = useState<typeof MOCK_POSTS>([]);
+  const [visiblePosts, setVisiblePosts] = useState<typeof MOCK_POSTS>([]);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+
+  // Load posts from localStorage or use mock data
+  useEffect(() => {
+    const storedPosts = localStorage.getItem('blogPosts');
+    if (storedPosts) {
+      setPosts(JSON.parse(storedPosts));
+    } else {
+      // Initialize with mock data if no posts exist
+      localStorage.setItem('blogPosts', JSON.stringify(MOCK_POSTS));
+      setPosts(MOCK_POSTS);
+    }
+  }, []);
 
   // Filter posts based on search term and active category
   useEffect(() => {
-    let filtered = MOCK_POSTS;
+    let filtered = posts;
     
     // Filter by search term
     if (searchTerm) {
@@ -116,10 +151,10 @@ const BlogPage: React.FC = () => {
     }
     
     setVisiblePosts(filtered);
-  }, [searchTerm, activeCategory]);
+  }, [searchTerm, activeCategory, posts]);
 
   // Featured posts
-  const featuredPosts = MOCK_POSTS.filter(post => post.featured);
+  const featuredPosts = posts.filter(post => post.featured);
 
   return (
     <Layout>
